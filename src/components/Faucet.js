@@ -1,23 +1,27 @@
-import { useState } from 'react';
-import { ethers } from 'ethers'
-import Card from 'react-bootstrap/Card'
-import Button from 'react-bootstrap/Button'
-import Message from './Message'
+import { useState } from "react";
+import { ethers } from "ethers";
+import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
+import Message from "./Message";
+import Web3 from "web3";
 
-const tokenAddress = "0xA4eE602c16C448Dc0D1fc38E6FC12f0d6C672Cbe"
+const tokenAddress = "0xfee657401b5955b05e10fe47c9fbf0b607b25272";
 
 const Faucet = (props) => {
-
-  const [balance, setBalance] = useState()
-  const [showBalance, setShowBalance] = useState(false)
-
+  const [balance, setBalance] = useState();
+  const [showBalance, setShowBalance] = useState(false);
 
   async function getBalance() {
-    if (typeof window.ethereum !== 'undefined') {
-      const [account] = await window.ethereum.request({ method: 'eth_requestAccounts' })
-      const provider = new ethers.providers.Web3Provider(window.ethereum);
-      const contract = new ethers.Contract(tokenAddress, props.tokenContract.abi, provider)
-      const balance = await contract.balanceOf(account);
+    if (typeof window.ethereum !== "undefined") {
+      const web3 = new Web3(window.ethereum);
+      const account = await web3.eth.getAccounts().then((accounts) => {
+        return accounts[0];
+      });
+      const contract = new web3.eth.Contract(
+        props.tokenContract.abi,
+        tokenAddress
+      );
+      const balance = await contract.methods.balanceOf(account).call();
       console.log("Balance: ", balance.toString());
       setBalance(balance.toString());
       setShowBalance(true);
@@ -25,29 +29,62 @@ const Faucet = (props) => {
   }
 
   async function faucet() {
-    if (typeof window.ethereum !== 'undefined') {
-      const account = await window.ethereum.request({ method: 'eth_requestAccounts' });
-      const provider = new ethers.providers.Web3Provider(window.ethereum);
-      const signer = provider.getSigner();
-      const contract = new ethers.Contract(tokenAddress, props.tokenContract.abi, signer);
-      contract.faucet(account[0], 100);
+    console.log("Faucet");
+    if (typeof window.ethereum !== "undefined") {
+      const web3 = new Web3(window.ethereum);
+      const account = await web3.eth.getAccounts().then((accounts) => {
+        return accounts[0];
+      });
+      console.log("Account: ", account);
+
+      const contract = new web3.eth.Contract(
+        props.tokenContract.abi,
+        tokenAddress
+      );
+
+      const tx = await contract.methods.mint(account, "1000000000000").send({
+        from: account,
+      });
     }
   }
-    return (
-        <div>
-        <Card style={{background: "rgba(227, 104, 222, 0.71)"}}>
+  async function addFiatTokenToMetaMask() {
+    if (typeof window.ethereum !== "undefined") {
+      const web3 = new Web3(window.ethereum);
+      const provider = web3.currentProvider;
+      await provider.sendAsync({
+        method: "metamask_watchAsset",
+        params: {
+          type: "ERC20",
+          options: {
+            address: tokenAddress,
+            symbol: "YPUSDC",
+            decimals: 6,
+          },
+        },
+        id: Math.round(Math.random() * 100000),
+      });
+    }
+  }
+  return (
+    <div>
+      <Card style={{ background: "rgba(241, 242, 246,0.75)", height: "290px" }}>
         <Card.Body>
-        <Card.Subtitle>recieve faucet ERC20 to your wallet
-        </Card.Subtitle><br></br>
-        <div className="d-grid gap-2">
-        <Button onClick={faucet}>get faucet token!</Button>
-        <Button onClick={getBalance} variant="warning">check my balance</Button>
-        { showBalance ? <Message balance={balance}/> : null }
-        </div>
+          <Card.Subtitle>Receive YPUSDC ERC20 to your wallet</Card.Subtitle>
+          <br></br>
+          <div className="d-grid gap-2">
+            <Button onClick={faucet}>Get 1,000,000 YPUSDC Token!</Button>
+            <Button onClick={addFiatTokenToMetaMask} variant="warning">
+              Add Token To My Wallet
+            </Button>
+            <Button onClick={getBalance} variant="warning">
+              Check My Balance
+            </Button>
+            {showBalance ? <Message balance={balance} /> : null}
+          </div>
         </Card.Body>
-        </Card>
-        </div>
-    )
-}
+      </Card>
+    </div>
+  );
+};
 
-export default Faucet
+export default Faucet;

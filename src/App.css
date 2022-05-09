@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  background-color: rgba(252, 203, 250, 0.65);
+  background-color: rgba(85, 239, 196,1.0);
   height: 100%;
   height: 100vh;
   display: flex;
@@ -9,11 +9,14 @@
 }
 
 .App-header {
-  background-color: rgb(253, 204, 251);
+  background-color: rgba(85, 239, 196,1.0);
   padding: 20px;
-  color: white;
+  color: rgba(241, 242, 246,1.0);
 }
 
 .App-intro {
   font-size: large;
+}
+h2{
+  color:rgba(47, 53, 66,1.0);
 }
