@@ -16,6 +16,7 @@
     "ethers": "^5.2.0",
     "express": "^4.17.1",
     "hardhat": "^2.3.0",
+    "hardhat-deploy": "^0.11.4",
     "react": "^17.0.2",
     "react-bootstrap": "^1.6.0",
     "react-dom": "^17.0.2",
@@ -27,7 +28,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "deploy-apothem": "hardhat deploy --network apothem --reset"
   },
   "eslintConfig": {
     "extends": [
