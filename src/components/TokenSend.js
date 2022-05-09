@@ -6,9 +6,12 @@ import Alert from "react-bootstrap/Alert";
 
 import Web3 from "web3";
 
-const tokenAddress = "0xfee657401b5955b05e10fe47c9fbf0b607b25272";
+// const tokenAddress = "0xfee657401b5955b05e10fe47c9fbf0b607b25272";
 
 const TokenSend = (props) => {
+  const token = props.token;
+  const tokenAddress = token.tokenAddress;
+
   const [userAccount, setUserAccount] = useState();
   const [amount, setAmount] = useState();
   const [transctionInProgress, setTransctionInProgress] = useState(false);
@@ -46,7 +49,7 @@ const TokenSend = (props) => {
   return (
     <Card style={{ background: "rgba(241, 242, 246,0.75)", height: "290px" }}>
       <Card.Body>
-        <Card.Subtitle> Send YPUSDC to an address</Card.Subtitle>
+        <Card.Subtitle> Send {token.tokenSymbol} to an address</Card.Subtitle>
         <br></br>
         <div className="d-grid gap-2">
           <input
