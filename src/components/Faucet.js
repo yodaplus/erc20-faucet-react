@@ -77,7 +77,9 @@ const Faucet = (props) => {
           </Card.Subtitle>
           <br></br>
           <div className="d-grid gap-2">
-            <Button onClick={faucet}>Get 1,000,000 YPUSDC Token!</Button>
+            <Button onClick={faucet}>
+              Get 1,000,000 {token.tokenSymbol} Token!
+            </Button>
             <Button onClick={addFiatTokenToMetaMask} variant="warning">
               Add Token To My Wallet
             </Button>
