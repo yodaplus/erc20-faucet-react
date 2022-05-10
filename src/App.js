@@ -29,6 +29,23 @@ function App() {
           tokenDecimal: 6,
         });
         break;
+
+      case "VUSD":
+        setToken({
+          tokenAddress: "0x681dc22d9890eFCc67D3ddECc518426ef880bAFD",
+          tokenSymbol: "VUSD",
+          tokenDecimal: 6,
+        });
+        break;
+
+      case "YINR":
+        setToken({
+          tokenAddress: "0xF9Ab4758de619952649e10A745BCf015530A0FAB",
+          tokenSymbol: "YINR",
+          tokenDecimal: 6,
+        });
+        break;
+
       case "FAUCET":
         setToken({
           tokenAddress: "0xe083B415E7430D5b405bB1881b09dF98372b34Da",
@@ -36,13 +53,7 @@ function App() {
           tokenDecimal: 6,
         });
         break;
-      case "HELLO":
-        setToken({
-          tokenAddress: "0x6190AC2c7B43c931bbE4C8336eaAEAaa9d9e2eeE",
-          tokenSymbol: "HELLO",
-          tokenDecimal: 6,
-        });
-        break;
+
       default:
         setToken({
           tokenAddress: "0xfee657401b5955b05e10fe47c9fbf0b607b25272",
@@ -70,8 +81,9 @@ function App() {
               }}
             >
               <option value="YPUSDC">YPUSDC</option>
+              <option value="VUSD">VUSD</option>
+              <option value="YINR">YINR</option>
               <option value="FAUCET">FAUCET</option>
-              <option value="HELLO">HELLO</option>
             </Form.Control>
             <Row className="justify-content-md-center">
               <Col>
