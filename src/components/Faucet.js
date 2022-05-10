@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ethers } from "ethers";
+// import { ethers } from "ethers";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import Message from "./Message";
@@ -43,7 +43,7 @@ const Faucet = (props) => {
         props.tokenContract.abi,
         token.tokenAddress
       );
-
+      // eslint-disable-next-line
       const tx = await contract.methods.mint(account, "1000000000000").send({
         from: account,
       });
