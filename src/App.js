@@ -36,6 +36,13 @@ function App() {
           tokenDecimal: 6,
         });
         break;
+      case "HELLO":
+        setToken({
+          tokenAddress: "0x6190AC2c7B43c931bbE4C8336eaAEAaa9d9e2eeE",
+          tokenSymbol: "HELLO",
+          tokenDecimal: 6,
+        });
+        break;
       default:
         setToken({
           tokenAddress: "0xfee657401b5955b05e10fe47c9fbf0b607b25272",
@@ -64,6 +71,7 @@ function App() {
             >
               <option value="YPUSDC">YPUSDC</option>
               <option value="FAUCET">FAUCET</option>
+              <option value="HELLO">HELLO</option>
             </Form.Control>
             <Row className="justify-content-md-center">
               <Col>

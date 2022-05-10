@@ -435,6 +435,14 @@ contract FiatTokenV1 is Ownable, ERC20, Pausable, Blacklistable {
         initialized = true;
     }
 
+    constructor(string _name,
+        string _symbol,
+        string _currency,
+        uint8 _decimals,
+        address _owner) public {
+        initiate(_name, _symbol, _currency, _decimals, _owner, _owner, _owner, _owner);
+        }
+
     /**
      * @dev Throws if called by any account other than a minter
      */

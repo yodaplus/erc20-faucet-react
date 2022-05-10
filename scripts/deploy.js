@@ -15,7 +15,7 @@ async function main() {
   await fiatToken.deployed();
 
   // console.log("Greeter deployed to:", greeter.address);
-  console.log("Token deployed to:", fctToken.address);
+  console.log("Token deployed to:", fiatToken.address);
 }
 
 main()
