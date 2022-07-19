@@ -67,7 +67,7 @@ const Faucet = (props) => {
       });
     }
   }
-
+  const tknAddrBtn = document.getElementById("tknAddr");
   return (
     <div>
       <Card style={{ background: "rgba(241, 242, 246,0.75)", height: "290px" }}>
@@ -80,9 +80,31 @@ const Faucet = (props) => {
             <Button onClick={faucet}>
               Get 1,000,000 {token.tokenSymbol} Token!
             </Button>
+
             <Button onClick={addFiatTokenToMetaMask} variant="warning">
               Add Token To My Wallet
             </Button>
+            <Button
+              id="tknAddr"
+              onClick={() => {
+                try {
+                  navigator.clipboard.writeText(token.tokenAddress);
+                  tknAddrBtn.innerHTML = "Copied !";
+                } catch (e) {
+                  console.log(e);
+                }
+              }}
+              onMouseLeave={() => {
+                try {
+                  tknAddrBtn.innerHTML = "Copy Token Address";
+                } catch (e) {
+                  console.log(e);
+                }
+              }}
+            >
+              Copy Token Address
+            </Button>
+
             <Button onClick={getBalance} variant="warning">
               Check My Balance
             </Button>
