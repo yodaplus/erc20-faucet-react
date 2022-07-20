@@ -54,6 +54,14 @@ function App() {
         });
         break;
 
+      case "USXD":
+        setToken({
+          tokenAddress: "0x1e2913E1aC339a4996353f8F58BE0de3D109b5A5",
+          tokenSymbol: "USXD",
+          tokenDecimal: 6,
+        });
+        break;
+
       default:
         setToken({
           tokenAddress: "0xfee657401b5955b05e10fe47c9fbf0b607b25272",
@@ -83,6 +91,7 @@ function App() {
               <option value="YPUSDC">YPUSDC</option>
               <option value="VUSD">VUSD</option>
               <option value="YINR">YINR</option>
+              <option value="USXD">USXD</option>
               <option value="FAUCET">FAUCET</option>
             </Form.Control>
             <Row className="justify-content-md-center">
