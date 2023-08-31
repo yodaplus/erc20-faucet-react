@@ -10,8 +10,8 @@ function App() {
   const TokenContract = FiatTokenV1;
 
   const [token, setToken] = useState({
-    tokenAddress: "0xfee657401b5955b05e10fe47c9fbf0b607b25272",
-    tokenSymbol: "YPUSDC",
+    tokenAddress: "0xe6f5e98693988d1d2003b74eb62206b633804487",
+    tokenSymbol: "FXD",
     tokenDecimal: 6,
   });
 
@@ -22,6 +22,13 @@ function App() {
   const handleChange = (e) => {
     // switch case for the different input fields
     switch (e) {
+      case "FXD":
+        setToken({
+          tokenAddress: "0xe6f5e98693988d1d2003b74eb62206b633804487",
+          tokenSymbol: "FXD",
+          tokenDecimal: 6,
+        });
+        break;
       case "YPUSDC":
         setToken({
           tokenAddress: "0xfee657401b5955b05e10fe47c9fbf0b607b25272",
@@ -88,6 +95,7 @@ function App() {
                 handleChange(e.target.value);
               }}
             >
+              <option value="FXD">FXD</option>
               <option value="YPUSDC">YPUSDC</option>
               <option value="VUSD">VUSD</option>
               <option value="YINR">YINR</option>
