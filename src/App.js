@@ -10,7 +10,7 @@ function App() {
   const TokenContract = FiatTokenV1;
 
   const [token, setToken] = useState({
-    tokenAddress: "0xe6f5e98693988d1d2003b74eb62206b633804487",
+    tokenAddress: "0x1b9b08a75881CE738EE8eEC07e864C04bdA4667A",
     tokenSymbol: "FXD",
     tokenDecimal: 6,
   });
@@ -24,7 +24,7 @@ function App() {
     switch (e) {
       case "FXD":
         setToken({
-          tokenAddress: "0xe6f5e98693988d1d2003b74eb62206b633804487",
+          tokenAddress: "0x1b9b08a75881CE738EE8eEC07e864C04bdA4667A",
           tokenSymbol: "FXD",
           tokenDecimal: 6,
         });
